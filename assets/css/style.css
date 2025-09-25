@@ -636,3 +636,75 @@ footer{
         width: 100%;
     }
 }
+
+/* Default Light Theme */
+body {
+  background: #ffffff;
+  color: #222222;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Theme */
+body.dark {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.theme-btn {
+  cursor: pointer;
+  font-size: 20px;
+  background: none;
+  border: none;
+}
+
+/* ----- SMOOTH TRANSITION FOR ALL ELEMENTS ----- */
+
+body, .btn, .input-field, textarea, .contact-info, .project-box, .about-info {
+    transition: all 0.3s ease;
+}
+
+/* ----- DARK THEME VARIABLES ----- */
+body.dark {
+    --body-color: #1e1e1e;
+    --color-white: #f1f1f1;
+    --text-color-second: #ddd;
+    --text-color-third: #00B5E7;
+    --first-color: #6e57e0;
+    --first-color-hover: #285bd4;
+    --second-color: #00b5e7;
+    --third-color: #c0a631;
+    --first-shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Automatically updates background and text colors */
+body.dark {
+    background: var(--body-color);
+    color: var(--text-color-second);
+}
+
+/* Form inputs dark mode */
+body.dark .input-field,
+body.dark textarea {
+    border: 2px solid #555;
+    background: #2c2c2c;
+    color: #f1f1f1;
+}
+
+body.dark .btn {
+    background: var(--second-color);
+    color: var(--color-white);
+}
+
+body.dark .contact-info {
+    background: #222;
+}
+
+body.dark .project-box {
+    background: #222;
+    box-shadow: 1px 8px 10px 2px rgba(0,0,0,0.5);
+}
+
+body.dark .about-info {
+    background: #222;
+    box-shadow: 1px 8px 10px 2px rgba(0,0,0,0.5);
+}
