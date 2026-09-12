@@ -9,6 +9,14 @@ export default function About() {
           <h2>About</h2>
         </div>
         <div className="about-grid">
+          {/*
+            Reserved slot for a profile photo: public/images/profile.jpg.
+            Not wired in yet — no file exists in the repo to point at, and
+            an <img> referencing a missing asset would just ship a broken
+            image. Once the file is added, this renders it hard-edged
+            (no border-radius, no filter) inside the grid, matching the
+            rest of the Raster identity.
+          */}
           <p className="about-statement">
             I learn engineering by building things that have to actually
             work — a real database, real authentication, real failure

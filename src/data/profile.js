@@ -1,7 +1,7 @@
 // Single source of truth for site content — edit here, not in the components.
-// Nothing here is invented: only what's actually true today. Update the
-// `EMAIL` placeholder before shipping, and add to `projects` as new work
-// actually ships (see the EduCore repo's README for the "why" on that rule).
+// Nothing here is invented: only what's actually true today. Add to
+// `PROJECTS` as new work actually ships (see the EduCore repo's README
+// for the "why" on that rule).
 
 export const PROFILE = {
   name: "Ahmed Alikar",
@@ -9,7 +9,13 @@ export const PROFILE = {
   statement:
     "I build backend systems and learn by shipping real, working software — not tutorials.",
   github: "https://github.com/AHmed-Alikar",
-  email: "hello@ahmedalikar.dev", // TODO: replace with your real contact email
+  email: "axmedkafi11@gmail.com",
+  // Given without a country code — the tel: link below uses it as-is,
+  // which dials correctly from the same country but isn't a portable
+  // international link. Prefix with + and a country code (e.g.
+  // +252615113303) if this needs to work for contacts abroad.
+  phone: "0615113303",
+  phoneDisplay: "0615 113 303",
 };
 
 export const FACTS = [

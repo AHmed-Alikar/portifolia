@@ -9,6 +9,7 @@ export default function Contact() {
           {PROFILE.email}
         </a>
         <div className="contact-secondary">
+          <a href={`tel:${PROFILE.phone}`}>{PROFILE.phoneDisplay}</a>
           <a href={PROFILE.github} target="_blank" rel="noreferrer">
             GitHub ↗
           </a>

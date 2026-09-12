@@ -24,11 +24,14 @@ npm run preview   # preview the production build locally
 
 ## Content
 
-Edit `src/data/profile.js` to update copy — name, role, stack, projects,
-and the "now" list. Nothing else needs to change for a content update.
+Edit `src/data/profile.js` to update copy — name, role, contact details,
+stack, projects, and the "now" list. Nothing else needs to change for a
+content update.
 
-**Before this goes live:** replace the placeholder email in
-`src/data/profile.js` (`PROFILE.email`) with a real contact address.
+**Still open:** a profile photo. The Raster design has a slot ready for
+one at `public/images/profile.jpg` (see the About section note in
+`src/components/About.jsx`) but no image ships in the repo — nothing
+was invented in its place.
 
 ## Deployment
 
