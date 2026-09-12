@@ -266,6 +266,20 @@ button:focus-visible {
   }
 }
 
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--black);
+}
+
 .about-statement {
   font-family: var(--font-display);
   font-weight: 600;
