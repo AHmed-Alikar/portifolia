@@ -1,13 +1,14 @@
 // Single source of truth for site content — edit here, not in the components.
 // Nothing here is invented: only what's actually true today. Add to
-// `PROJECTS` as new work actually ships (see the EduCore repo's README
-// for the "why" on that rule).
+// `PROJECTS` as new work actually ships, and move items between
+// `ENGINEERING` groups only when they're genuinely true — see the
+// EduCore repo's README for the "why" behind that rule.
 
 export const PROFILE = {
   name: "Ahmed Alikar",
   role: "Software Engineer",
-  statement:
-    "I build backend systems and learn by shipping real, working software — not tutorials.",
+  positioning:
+    "I build real software across backend systems, full-stack applications, and — increasingly — AI engineering and mobile.",
   github: "https://github.com/AHmed-Alikar",
   email: "axmedkafi11@gmail.com",
   // Given without a country code — the tel: link below uses it as-is,
@@ -18,36 +19,102 @@ export const PROFILE = {
   phoneDisplay: "0615 113 303",
 };
 
-export const FACTS = [
-  { n: "01", label: "Focus", value: "Backend engineering & system design" },
-  { n: "02", label: "Daily stack", value: "Go, Node.js, React, PostgreSQL" },
-  { n: "03", label: "Currently learning", value: "AI / LLM engineering, RAG" },
-  { n: "04", label: "Based", value: "Building in public on GitHub" },
-];
-
-// Sized by how often it's actually reached for — "core" is used daily,
-// "working" is used comfortably, "learning" is active study, not a claim
-// of mastery.
-export const STACK = {
-  core: ["Go", "Node.js", "React", "PostgreSQL"],
-  working: ["Python", "Flask", "C#", "C++", "MySQL", "MongoDB", "SQLite"],
-  learning: ["React Native", "Flutter", "Dart", "LLM engineering", "RAG"],
+export const ABOUT = {
+  paragraphs: [
+    "I learn engineering by building things that have to actually work — a real database, real authentication, real failure modes — instead of following a tutorial to the finish line and stopping there.",
+    "That means writing an HTTP server on Go's standard library before reaching for a framework, and reading a security library's source before trusting it with a password. It's slower than copying a boilerplate, and it's the only way I've found that the understanding actually sticks.",
+    "Most of my work so far has been backend-leaning — APIs, auth, databases — but I'm deliberately pushing into full-stack, mobile, and applied AI engineering rather than staying in one lane.",
+  ],
+  focus: [
+    { label: "Working in", value: "Backend systems, full-stack web, system design" },
+    { label: "Actively learning", value: "Mobile (React Native, Flutter), AI/LLM engineering" },
+    { label: "Where to see it", value: "github.com/AHmed-Alikar" },
+  ],
 };
+
+// Grouped by engineering area, not flattened into one badge wall — and
+// within each group, ordered by how often the tool is actually reached
+// for. Nothing here is scored or claimed as a percentage.
+export const ENGINEERING = [
+  {
+    id: "backend",
+    title: "Backend & Systems",
+    blurb: "APIs, authentication, and the parts of a system that have to be correct.",
+    stack: ["Go", "Node.js", "REST APIs", "JWT auth", "Role-based access control", "System design"],
+  },
+  {
+    id: "fullstack",
+    title: "Full-Stack",
+    blurb: "Connecting a real backend to a real interface.",
+    stack: ["React", "Node.js", "PostgreSQL", "Vite"],
+  },
+  {
+    id: "ai",
+    title: "AI Engineering",
+    blurb: "Early, hands-on — not yet shipped in a project, actively under study.",
+    stack: ["Python", "LLM applications", "RAG", "Evaluation"],
+    note: "learning",
+  },
+  {
+    id: "mobile",
+    title: "Mobile",
+    blurb: "The other side of full-stack — actively picking this up.",
+    stack: ["React Native", "Flutter", "Dart"],
+    note: "learning",
+  },
+  {
+    id: "data",
+    title: "Data & Infrastructure",
+    blurb: "Where the state actually lives.",
+    stack: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+  },
+];
 
 export const PROJECTS = [
   {
     n: "01",
     name: "EduCore",
-    status: "in progress",
-    description:
-      "A Go + PostgreSQL REST API for education management — JWT authentication, role-based access control, and student records, built on the standard library without a framework.",
-    stack: ["Go", "PostgreSQL", "JWT", "bcrypt"],
+    featured: true,
+    status: "In progress",
+    category: "Backend Engineering",
+    oneLiner: "A Go + PostgreSQL API that handles login, permissions, and student records for a school system.",
+    problem:
+      "Education-management software is usually a wall of CRUD screens bolted onto whatever auth the framework gave you for free. Before building any of that, I wanted the foundation — who's allowed to do what, and why — to be something I actually understood, not scaffolded.",
+    whoFor:
+      "A school or training program that needs to track students and control who on staff can see or change what.",
+    builtSoFar: [
+      "Registration and login, with passwords hashed via bcrypt — never stored or compared in plain text.",
+      "JWT-based sessions, with the signing secret read from the environment; the server refuses to start if it's missing rather than falling back to a bundled default.",
+      "Role-gated middleware — a route can require a specific role (admin, for example) before the handler ever runs.",
+      "Student records readable over a JSON API, backed by PostgreSQL via pgx.",
+    ],
+    decisions: [
+      {
+        title: "Fail-fast configuration",
+        detail: "A missing JWT secret is a startup crash, not a silently insecure default. Found and fixed after the secret was briefly hardcoded in source.",
+      },
+      {
+        title: "Hashing over encryption",
+        detail: "Passwords go through bcrypt — one-way and deliberately slow — never anything reversible.",
+      },
+      {
+        title: "Composable middleware",
+        detail: "Auth and role checks are separate, stackable handlers rather than one function doing both jobs.",
+      },
+    ],
+    notYet: [
+      "Create/update/delete exist as internal functions but aren't wired to HTTP routes yet — only reads are exposed.",
+      "No input validation beyond what the database schema enforces.",
+      "Test coverage is limited to password hashing — the HTTP handlers and database layer aren't tested yet.",
+      "No frontend, teachers, courses, attendance, or grades yet — that's the roadmap, not the current state.",
+    ],
+    stack: ["Go", "PostgreSQL", "JWT", "bcrypt", "pgx"],
     href: "https://github.com/AHmed-Alikar/EduCore",
   },
 ];
 
 export const NOW = [
-  "Finishing EduCore's core API before adding a frontend.",
-  "Researching five new, original full-stack projects — one at a time, each shipped end to end with tests, docs, and a real deployment.",
-  "Studying applied AI engineering: retrieval-augmented generation and LLM evaluation.",
+  "Finishing EduCore's core API — wiring the remaining CRUD routes and adding input validation — before starting a frontend.",
+  "Researching five new, original projects to build next, one at a time, each shipped end to end with tests, docs, and a real deployment.",
+  "Studying applied AI engineering: retrieval-augmented generation and how to evaluate an LLM system properly.",
 ];

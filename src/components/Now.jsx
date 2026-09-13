@@ -2,11 +2,11 @@ import { NOW } from "../data/profile.js";
 
 export default function Now() {
   return (
-    <section className="section" aria-labelledby="now-heading">
+    <section className="section" id="now">
       <div className="shell">
         <div className="section-head">
-          <span className="num">03</span>
-          <h2 id="now-heading">Now</h2>
+          <span className="section-no">04</span>
+          <h2>Currently building</h2>
         </div>
         <ul className="now-list">
           {NOW.map((item) => (
