@@ -5,7 +5,7 @@ export default function Now() {
     <section className="section" id="now">
       <div className="shell">
         <div className="section-head">
-          <span className="section-no">04</span>
+          <span className="section-no">05</span>
           <h2>Currently building</h2>
         </div>
         <ul className="now-list">

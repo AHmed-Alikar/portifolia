@@ -5,7 +5,7 @@ export default function Contact() {
     <section className="section contact-section" id="contact">
       <div className="shell">
         <div className="section-head">
-          <span className="section-no">05</span>
+          <span className="section-no">06</span>
           <h2>Contact</h2>
         </div>
         <p className="contact-lede">
