@@ -2,10 +2,16 @@ import { PROFILE } from "../data/profile.js";
 
 export default function Contact() {
   return (
-    <section className="contact" id="contact">
+    <section className="section contact-section" id="contact">
       <div className="shell">
-        <span className="eyebrow">04 — Get in touch</span>
-        <a className="contact-link" href={`mailto:${PROFILE.email}`}>
+        <div className="section-head">
+          <span className="section-no">05</span>
+          <h2>Contact</h2>
+        </div>
+        <p className="contact-lede">
+          Let&rsquo;s talk about software, a project, or a role.
+        </p>
+        <a className="contact-email" href={`mailto:${PROFILE.email}`}>
           {PROFILE.email}
         </a>
         <div className="contact-secondary">

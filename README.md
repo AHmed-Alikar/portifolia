@@ -1,11 +1,11 @@
 # Ahmed Alikar — Portfolio
 
-Personal portfolio site. Design direction: **Raster** — a Swiss/International
-Typographic Style layout: a strict grid, one condensed display face at real
-scale, hard edges (no rounded corners, no shadows, no gradients), and a
-fixed red/black/white/yellow palette. No content here is invented — the
-`src/data/profile.js` file is the single source of truth, and it only
-lists what's actually built.
+Personal portfolio site. Content is organized around actual engineering
+areas (backend, full-stack, AI, mobile, data) and real projects rather
+than a single-project showcase. Dark, editorial, one restrained accent
+color — no gradients, no glassmorphism, no fake metrics. No content
+here is invented — `src/data/profile.js` is the single source of
+truth, and it only lists what's actually built.
 
 ## Stack
 
@@ -24,20 +24,29 @@ npm run preview   # preview the production build locally
 
 ## Content
 
-Edit `src/data/profile.js` to update copy — name, role, contact details,
-stack, projects, and the "now" list. Nothing else needs to change for a
-content update.
+Edit `src/data/profile.js` to update copy — name, role, the `ABOUT` and
+`ENGINEERING` sections, `PROJECTS`, and the `NOW` list. Nothing else
+needs to change for a content update. When a new project actually
+ships, add it to `PROJECTS`; give it `featured: true` to replace the
+current featured write-up, or leave it unfeatured to appear in the
+project index below it.
 
-**Still open:** a profile photo. The Raster design has a slot ready for
-one at `public/images/profile.jpg` (see the About section note in
-`src/components/About.jsx`) but no image ships in the repo — nothing
-was invented in its place.
+## Design system
+
+- **Type**: Archivo (display/headings), Source Sans 3 (body), IBM Plex
+  Mono (labels, tags, section numbers only — never body copy).
+- **Color**: near-black ground (`--bg`), one warm accent (`--accent`,
+  used sparingly — CTAs, active states, the one underline in Contact),
+  a separate semantic green (`--good`) for status pills so it's never
+  confused with the accent.
+- Tokens live at the top of `src/styles/global.css`; components are
+  styled through those tokens, not one-off colors.
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds and deploys `dist/` to GitHub Pages
-on every push to `main`. One-time setup: in this repo's Settings → Pages,
-set **Source** to "GitHub Actions".
+`.github/workflows/deploy.yml` builds and deploys `dist/` to GitHub
+Pages on every push to `main`. GitHub Pages is enabled with **Source**
+set to "GitHub Actions" in this repo's settings.
 
 `vite.config.js` sets the production base path to `/portifolia/` to match
 this repo's name for a `username.github.io/portifolia/` project-page URL.
