@@ -35,38 +35,66 @@ export const ABOUT = {
 // Grouped by engineering area, not flattened into one badge wall — and
 // within each group, ordered by how often the tool is actually reached
 // for. Nothing here is scored or claimed as a percentage.
+//
+// `tier: "core"` = what I actually build with today.
+// `tier: "expanding"` = genuinely under active study, not yet shipped —
+// kept visually secondary so the section reads as "what I build," not
+// as a checklist trying to prove breadth.
 export const ENGINEERING = [
   {
     id: "backend",
     title: "Backend & Systems",
     blurb: "APIs, authentication, and the parts of a system that have to be correct.",
     stack: ["Go", "Node.js", "REST APIs", "JWT auth", "Role-based access control", "System design"],
+    tier: "core",
   },
   {
     id: "fullstack",
     title: "Full-Stack",
     blurb: "Connecting a real backend to a real interface.",
     stack: ["React", "Node.js", "PostgreSQL", "Vite"],
-  },
-  {
-    id: "ai",
-    title: "AI Engineering",
-    blurb: "Early, hands-on — not yet shipped in a project, actively under study.",
-    stack: ["Python", "LLM applications", "RAG", "Evaluation"],
-    note: "learning",
-  },
-  {
-    id: "mobile",
-    title: "Mobile",
-    blurb: "The other side of full-stack — actively picking this up.",
-    stack: ["React Native", "Flutter", "Dart"],
-    note: "learning",
+    tier: "core",
   },
   {
     id: "data",
     title: "Data & Infrastructure",
     blurb: "Where the state actually lives.",
     stack: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+    tier: "core",
+  },
+  {
+    id: "ai",
+    title: "AI Engineering",
+    blurb: "Not yet shipped in a project — under active, hands-on study.",
+    stack: ["Python", "LLM applications", "RAG", "Evaluation"],
+    tier: "expanding",
+  },
+  {
+    id: "mobile",
+    title: "Mobile",
+    blurb: "The other side of full-stack — actively picking this up.",
+    stack: ["React Native", "Flutter", "Dart"],
+    tier: "expanding",
+  },
+];
+
+// The "How I work" section — a small set of real, specific principles,
+// each anchored to something that actually happened (not aphorisms).
+export const PRINCIPLES = [
+  {
+    n: "01",
+    title: "Build it before you trust it",
+    body: "I don't adopt a library or pattern until I've read enough of it to know what it does when it fails. That's why EduCore's HTTP layer is hand-written on Go's standard library instead of a framework.",
+  },
+  {
+    n: "02",
+    title: "Fail loud, not quiet",
+    body: "EduCore's JWT secret used to have a hardcoded fallback. Now a missing secret crashes the server on startup instead of silently signing tokens with a bundled default.",
+  },
+  {
+    n: "03",
+    title: "Say what's not done",
+    body: "Every project on this site lists what's actually missing, not just what's shipped — CRUD routes that exist as functions but aren't wired up, tests that don't exist yet, features that are still just a roadmap item.",
   },
 ];
 
