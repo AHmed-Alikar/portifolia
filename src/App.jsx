@@ -1,8 +1,8 @@
 import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
-import Stack from "./components/Stack.jsx";
-import Projects from "./components/Projects.jsx";
+import Engineering from "./components/Engineering.jsx";
+import Work from "./components/Work.jsx";
 import Now from "./components/Now.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -17,8 +17,8 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
-        <Stack />
-        <Projects />
+        <Engineering />
+        <Work />
         <Now />
       </main>
       <Contact />
