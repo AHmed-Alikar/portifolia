@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PROFILE } from "../data/profile.js";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 const LINKS = [
   { label: "About", href: "#about" },
@@ -31,16 +32,19 @@ export default function Nav() {
             </a>
           ))}
         </nav>
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-          <span className="nav-toggle-bars" aria-hidden="true"></span>
-        </button>
+        <div className="nav-actions">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+            <span className="nav-toggle-bars" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
       <nav
         id="mobile-nav"
