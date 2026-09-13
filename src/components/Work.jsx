@@ -1,19 +1,40 @@
 import { PROJECTS } from "../data/profile.js";
 
-function Featured({ project }) {
+function ProjectRow({ project }) {
   return (
-    <article className="project-feature">
-      <div className="project-feature-head">
-        <div>
-          <span className="project-kicker">Featured · {project.category}</span>
-          <h3>{project.name}</h3>
+    <article className="project-row">
+      <div className="project-row-top">
+        <span className="project-row-n">{project.n}</span>
+        <div className="project-row-heading">
+          <div className="project-row-title-line">
+            <h3>{project.name}</h3>
+            <span className="status-pill">{project.status}</span>
+          </div>
+          <span className="project-row-category">{project.category}</span>
         </div>
-        <span className="status-pill">{project.status}</span>
       </div>
-      <p className="project-oneliner">{project.oneLiner}</p>
 
-      <div className="project-body">
-        <div className="project-main">
+      <p className="project-row-oneliner">{project.oneLiner}</p>
+
+      <div className="project-row-meta">
+        <ul className="tag-row">
+          {project.stack.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
+        <a
+          className="project-row-link"
+          href={project.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub ↗
+        </a>
+      </div>
+
+      <details className="project-details">
+        <summary>Case study — problem, decisions, what&rsquo;s not done</summary>
+        <div className="project-details-body">
           <div className="project-field">
             <h4>The problem</h4>
             <p>{project.problem}</p>
@@ -41,9 +62,6 @@ function Featured({ project }) {
               ))}
             </dl>
           </div>
-        </div>
-
-        <aside className="project-side">
           <div className="not-yet">
             <span className="not-yet-label">Not built yet</span>
             <ul>
@@ -52,63 +70,48 @@ function Featured({ project }) {
               ))}
             </ul>
           </div>
-          <ul className="tag-row">
-            {project.stack.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-          <a
-            className="btn btn-primary btn-block"
-            href={project.href}
-            target="_blank"
-            rel="noreferrer"
-          >
-            View source on GitHub ↗
-          </a>
-        </aside>
-      </div>
+        </div>
+      </details>
     </article>
   );
 }
 
 export default function Work() {
-  const featured = PROJECTS.find((p) => p.featured);
-  const rest = PROJECTS.filter((p) => !p.featured);
-
   return (
     <section className="section" id="work">
       <div className="shell">
         <div className="section-head">
           <span className="section-no">03</span>
-          <h2>Selected work</h2>
+          <h2>Selected projects</h2>
         </div>
         <p className="section-dek">
-          One project, done properly, beats five half-finished ones. Real
-          projects land here as they ship — nothing is added before it&rsquo;s
-          actually built.
+          Real projects, added as they ship — not before. This index is
+          built to hold many; right now it holds one, honestly.
         </p>
 
-        {featured && <Featured project={featured} />}
-
-        <div className="project-index">
-          {rest.map((p) => (
-            <a className="project-index-row" href={p.href} key={p.name}>
-              <span className="n">{p.n}</span>
-              <span className="name">{p.name}</span>
-              <span className="desc">{p.oneLiner}</span>
-              <span className="arrow" aria-hidden="true">
-                →
-              </span>
-            </a>
+        <div className="project-list">
+          {PROJECTS.map((p) => (
+            <ProjectRow project={p} key={p.name} />
           ))}
-          <div className="project-index-row is-placeholder">
-            <span className="n">{String(PROJECTS.length + 1).padStart(2, "0")}</span>
-            <span className="name">More in progress</span>
-            <span className="desc">
-              Five new, original projects are planned next — each one shipped
-              completely before the next starts.
-            </span>
-            <span></span>
+          <div className="project-row project-row-placeholder">
+            <div className="project-row-top">
+              <span className="project-row-n">
+                {String(PROJECTS.length + 1).padStart(2, "0")}
+              </span>
+              <div className="project-row-heading">
+                <div className="project-row-title-line">
+                  <h3>More, planned</h3>
+                  <span className="status-pill status-pill-muted">
+                    Not started
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p className="project-row-oneliner">
+              Five new, original projects are planned next — across
+              different domains, one built and shipped completely before
+              the next starts. Nothing here until it&rsquo;s real.
+            </p>
           </div>
         </div>
       </div>
