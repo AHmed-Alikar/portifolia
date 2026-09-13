@@ -11,7 +11,11 @@ export default [
       ecmaVersion: 2022,
       sourceType: "module",
       parserOptions: { ecmaFeatures: { jsx: true } },
-      globals: { document: "readonly", window: "readonly" },
+      globals: {
+        document: "readonly",
+        window: "readonly",
+        localStorage: "readonly",
+      },
     },
     settings: { react: { version: "detect" } },
     plugins: {

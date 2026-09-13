@@ -18,7 +18,23 @@
     <meta property="og:url" content="https://ahmed-alikar.github.io/portifolia/" />
     <meta property="og:image" content="https://ahmed-alikar.github.io/portifolia/images/profile.jpg" />
     <meta name="twitter:card" content="summary" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Runs before paint so there's no flash of the wrong theme. Only
+      // ever sets a value a person actually chose — if nothing is
+      // stored, the CSS media query below decides from prefers-color-scheme.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {
+          /* localStorage unavailable — fall back to prefers-color-scheme */
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
