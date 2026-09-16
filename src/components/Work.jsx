@@ -22,14 +22,26 @@ function ProjectRow({ project }) {
             <li key={t}>{t}</li>
           ))}
         </ul>
-        <a
-          className="project-row-link"
-          href={project.href}
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub ↗
-        </a>
+        <div className="project-row-links">
+          {project.showcaseHref && (
+            <a
+              className="project-row-link project-row-link-primary"
+              href={project.showcaseHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View project ↗
+            </a>
+          )}
+          <a
+            className="project-row-link"
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub ↗
+          </a>
+        </div>
       </div>
 
       <details className="project-details">
@@ -86,7 +98,7 @@ export default function Work() {
         </div>
         <p className="section-dek">
           Real projects, added as they ship — not before. This index is
-          built to hold many; right now it holds one, honestly.
+          built to hold many; right now it holds three, honestly.
         </p>
 
         <div className="project-list">

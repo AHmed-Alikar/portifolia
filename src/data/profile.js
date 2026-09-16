@@ -101,6 +101,91 @@ export const PRINCIPLES = [
 export const PROJECTS = [
   {
     n: "01",
+    name: "Livestock & Crop Price Lookup Platform",
+    featured: true,
+    status: "Feature-complete demo",
+    category: "Full-Stack (Web + Mobile)",
+    oneLiner:
+      "A price-transparency lookup tool for livestock and crop markets — not a marketplace — with a React web app, a Flutter mobile app, and a shared Node/Express API.",
+    problem:
+      "Buyers and sellers in livestock and crop markets often can't see what an item is actually trading for elsewhere, which makes prices easy to misquote. This project builds the transparency layer — public price lookups and history — without taking on the much harder problem of running an actual marketplace.",
+    whoFor:
+      "Visitors who want to check current and historical prices, traders who submit price entries for approval, and an admin who manages items, markets, and trader submissions.",
+    builtSoFar: [
+      "Visitor browsing flow: search and filter items/markets, view price history as a chart (Recharts on web, fl_chart on mobile).",
+      "Trader authentication and submission flow — traders submit price entries that enter an approval workflow.",
+      "Admin authentication with an approval queue, plus item and market management.",
+      "A Flutter mobile app covering the visitor and trader flows against the same REST API as the web app.",
+      "A documented seed dataset and a written test report covering the core flows end to end.",
+    ],
+    decisions: [
+      {
+        title: "Role and status enforced server-side",
+        detail: "Trader/admin role checks and submission status transitions are enforced in the API, not just hidden in the UI.",
+      },
+      {
+        title: "Cascade deletes over orphaned records",
+        detail: "Deleting a market or item cleans up its dependent price entries instead of leaving dangling references.",
+      },
+      {
+        title: "Mobile app scoped to what traders and visitors need",
+        detail: "The Flutter app implements the visitor and trader flows; admin functionality was kept web-only rather than duplicating it on mobile.",
+      },
+    ],
+    notYet: [
+      "No live deployment — verified and tested locally, not hosted anywhere yet.",
+      "No screenshots in the repo; the showcase site documents the architecture instead of the UI.",
+      "No payment or transaction handling — this is a price-lookup tool, not a marketplace, by design.",
+    ],
+    stack: ["React", "Vite", "React Router", "Recharts", "Node.js", "Express", "MongoDB", "Mongoose", "Flutter"],
+    href: "https://github.com/AHmed-Alikar/Livestock-Crop-Price-Lookup-Platform",
+    showcaseHref: "https://ahmed-alikar.github.io/Livestock-Crop-Price-Lookup-Platform/",
+  },
+  {
+    n: "02",
+    name: "Somali Heritage & Tourism Platform",
+    featured: true,
+    status: "In progress",
+    category: "Full-Stack (Web + Mobile)",
+    oneLiner:
+      "A moderated, bilingual (Somali/English) directory for discovering tourism destinations and hospitality businesses across Somalia, with a shared web, mobile, and API stack.",
+    problem:
+      "Somalia's tourism and heritage sites, and the small businesses around them, have no centralized bilingual directory that visitors can browse and businesses can self-list on. This platform is a moderated listings directory — businesses submit places, an admin approves them, and visitors search, filter, and review what's public.",
+    whoFor:
+      "Visitors browsing and reviewing approved places, businesses self-listing their locations, and an admin moderating submissions and managing region/category data.",
+    builtSoFar: [
+      "Three role-based account types (Visitor, Business, Admin) with local and Google OAuth authentication.",
+      "Bilingual (EN/SO) place listings with region, category, contact info, photos, and geolocation, wired across every web and mobile screen.",
+      "A moderation workflow: business submissions start pending, an admin approves or rejects them, and editing an approved place resets it to pending.",
+      "Reviews with star ratings, an admin approval queue, and automatic average-rating recalculation.",
+      "Maps and geocoding on OpenStreetMap/Leaflet/Nominatim instead of a paid Google Maps key, on both web (react-leaflet) and mobile (flutter_map).",
+      "Cloudinary-backed image uploads for cover photos and galleries on both platforms.",
+    ],
+    decisions: [
+      {
+        title: "OpenStreetMap over Google Maps",
+        detail: "Maps and geocoding run on Leaflet/Nominatim so the project needs no paid API key — the backend self-throttles geocoding requests to respect Nominatim's rate limit.",
+      },
+      {
+        title: "Facebook login gated off, not half-built",
+        detail: "The Facebook OAuth routes and model fields exist end to end, but return a 503 until real app credentials are configured — a deliberate, documented gate rather than a silent gap.",
+      },
+      {
+        title: "Edits re-trigger moderation",
+        detail: "Editing an already-approved place resets its status to pending, so a listing can't quietly change after approval without re-review.",
+      },
+    ],
+    notYet: [
+      "No booking, payment, or itinerary feature — despite \"Tourism\" in the name, this is a discovery directory, not a booking platform.",
+      "No automated test suite for the backend or web frontend; the mobile project only ships Flutter's default template test.",
+      "No CI/CD, containerization, or deployment configuration — and no live/hosted deployment exists yet.",
+    ],
+    stack: ["React", "Vite", "React Router", "Leaflet", "Node.js", "Express", "MongoDB", "Mongoose", "Passport.js", "Cloudinary", "Flutter"],
+    href: "https://github.com/AHmed-Alikar/Somali-Heritage-Tourism",
+    showcaseHref: "https://ahmed-alikar.github.io/Somali-Heritage-Tourism/",
+  },
+  {
+    n: "03",
     name: "EduCore",
     featured: true,
     status: "In progress",

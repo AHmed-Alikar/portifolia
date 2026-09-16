@@ -30,7 +30,7 @@ export default function Hero() {
             src={`${import.meta.env.BASE_URL}images/profile.jpg`}
             alt="Ahmed Alikar"
             width="360"
-            height="440"
+            height="360"
           />
         </div>
       </div>
